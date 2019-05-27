@@ -11,3 +11,5 @@
 3. Scala learning:
 	- [Abstract vs Trait](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/Abstract.scala)
 	- [Higher Order Function](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/HigherOrderFunction.scala)
+	- [Partially-Applied Function](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/PAF.scala)
+	- [Curring Function](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/CurryFunction.scala)
