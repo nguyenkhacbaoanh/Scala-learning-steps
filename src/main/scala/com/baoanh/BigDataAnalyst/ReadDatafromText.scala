@@ -1,4 +1,4 @@
-package BigDataAnalyst
+package com.baoanh.BigDataAnalyst
 
 object ReadDatafromText {
   import scala.io.Source.fromFile
