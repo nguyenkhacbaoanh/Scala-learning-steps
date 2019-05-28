@@ -14,3 +14,4 @@
 	- [Partially-Applied Function](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/PAF.scala)
 	- [Curring Function](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/CurryFunction.scala)
 	- [Option Type in Scala](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/OptionVal.scala)
+	- [List and ListBuffer](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/ListVal.scala)
