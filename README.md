@@ -16,3 +16,7 @@
 	- [Option Type in Scala](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/OptionVal.scala)
 	- [List and ListBuffer](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/ListVal.scala)
 	- [Read csv file and simple data process](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/ReadData.scala)
+	- [map - flatMap - flatten - filter methods](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/MapFmapFlattenFilter.scala)
+
+4. Big Data Analyst:
+	- [Data Processing 1 - tempdata](./src/main/scala/com/baoanh/BigDataAnalyst/ReadDatafromText.scala)
