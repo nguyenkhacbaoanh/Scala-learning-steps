@@ -1,7 +1,7 @@
 package com.baoanh.LearnSPARK
-import com.baoanh.LearnSPARK.Context
 
 object DataFrame_Tuto extends App with Context {
+  import com.baoanh.LearnSPARK.Context
   def main(args: Array[String]) = {
     // csv file path
     val path_dir:String = System.getProperty("user.dir")
