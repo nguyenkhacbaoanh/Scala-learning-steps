@@ -23,6 +23,6 @@ object Sparksql_Tuto extends App with Context {
     
     // other query test
     sparkSession.sql("SELECT `Start Station`, `End Station`, Duration FROM so_tripsdf LIMIT 10")
-                .show()
+                .show()  
   }
 }

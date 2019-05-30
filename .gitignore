@@ -4,3 +4,5 @@
 .cache-tests
 .classpath
 .project
+.DS_Store
+.gitignore
