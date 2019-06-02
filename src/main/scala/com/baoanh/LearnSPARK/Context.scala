@@ -1,5 +1,6 @@
 package com.baoanh.LearnSPARK
 import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
 
 trait Context {
@@ -12,4 +13,6 @@ trait Context {
           .builder()
           .config(conf)
           .getOrCreate()
+    lazy val sparkContext = new SparkContext(conf)
+    sparkContext.setLogLevel("WARN")
 }

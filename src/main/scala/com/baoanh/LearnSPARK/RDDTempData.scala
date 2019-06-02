@@ -12,10 +12,8 @@ object RDDTempData extends App with Context {
   
   def main(args: Array[String]) = {
     val pathFile:String = System.getProperty("user.dir") + "/data/tempdata.txt"
-    val data = sparkSession
-                .read
+    val data = sparkContext
                 .textFile(pathFile)
-                .rdd
                 .filter(!_.contains("Day ")) //drop the header
                 .filter(!_.contains(".")) // drop missing value with dot symbol
                 .map{ line =>
@@ -41,6 +39,7 @@ object RDDTempData extends App with Context {
     val hotday2 = data.reduce((d1, d2) => 
                                     if (d1.tmax <= d2.tmax) d2 else d1)
     println(f"Hot day 2 in year: ${hotday2}")
+    println("--------------------------------------")
     //Count rainy day
     val rainyCount = data.filter(_.precip >= 1.0).count()
     println(f"Number of rainy days: ${rainyCount}. There are ${rainyCount*100.0/data.count} percent.")
@@ -51,7 +50,7 @@ object RDDTempData extends App with Context {
       }, {case ((s1,c1),(s2,c2)) => 
         (s1+s2,c1+c2)
       })
-    println(s"Average Rainy temp using aggregate method is ${rainySumTemp/rainyCount2}")
+//    println(s"Average Rainy temp using aggregate method is ${rainySumTemp/rainyCount2}")
     // Using flatMap to get the same result
     /*
      * flatMap method take each elements in array to apply with a function and return these elements of this result
@@ -61,15 +60,28 @@ object RDDTempData extends App with Context {
     println("--------------------------------------")
     // Groupby method
     val groupMonth = data.groupBy(_.month)
-    val TempAvgByMonth = groupMonth.map { case (m, days) => 
+    val TempHighAvgByMonth = groupMonth.map { case (m, days) => 
       m -> days.foldLeft(0.0)((sum, td) => 
         sum + td.tmax)/days.size
     }
     println(f"Temp Avg by Month: ")
-    TempAvgByMonth.collect foreach println
+    TempHighAvgByMonth.collect foreach println
+    println("--------------------------------------")
     // println(f"Temp Avg by Month by Vector ${TempAvgByMonth.toSeq.sortBy(_._1)}")
-    TempAvgByMonth.sortBy(_._1) foreach {
+    TempHighAvgByMonth.sortBy(_._1) foreach {
       case (m, avgtemp) => println(f"Month $m have average $avgtemp temperature")
     }
-  }           
+    /*
+     * Double RDD Function
+     */
+    println(f"Stdev of High Monthly Temperature: ${data.map(_.tmax).stdev()}")
+    println(f"Stdev of Low Monthly Temperature: ${data.map(_.tmin).stdev()}")
+    println(f"Stdev of Average Monthly Temperature: ${data.map(_.tave).stdev()}")
+    println("--------------------------------------")
+    // keyByYear
+//    val keyedByYear = data.map(td => td.year -> td)
+//    val averageTempsByYear = keyedByYear.aggregateByKey(0.0 -> 0)({ case ((sum, cnt), td) =>
+//      (sum+td.tmax, cnt+1)
+//    }, { case ((s1, c1), (s2, c2)) => (s1+s2, c1+c2) })
+  } 
 }
