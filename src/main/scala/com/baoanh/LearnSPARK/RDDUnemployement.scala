@@ -35,18 +35,22 @@ object RDDUnemployement extends App with Context {
      */
     val rates = laData.filter(_.id.endsWith("03"))
     // Pair RDD
-    val decadeGroups = rates.map(d => (d.id, d.year/10) -> d.value)
-    decadeGroups.take(5) foreach println
-    // calculate group average
-    val decadeAvg = decadeGroups.aggregateByKey(0.0 -> 0)({ case ((sum, cnt),v) =>
-        (sum + v, cnt + 1)
+     val decadeGroups = rates.map(d => (d.id, d.year/10) -> d.value)
+     decadeGroups.take(5) foreach println
+//     calculate group average
+     val decadeAvg = decadeGroups.aggregateByKey(0.0 -> 0)({ case ((sum, cnt),v) =>
+         (sum + v, cnt + 1)
       }, {
       case ((s1, c1),(s2, c2)) => (s1 + s2, c1 + c2)}).map({case (x,y) => (x,y._1/y._2)})
-   decadeAvg.foreach(println)
+     decadeAvg.foreach(println)
     
-
+     val maxDecade = decadeAvg.map{case ((id, dec), av) => id -> (dec*10, av)}. //*10 to return year
+                   reduceByKey{ case ((d1, a1),(d2, a2)) => if (d1 >= d2) (d1,a1) else (d2,a2)}
     
-    
+     val pairSeries = series.map(p => p.id -> p.title)
+     // join two PairRDD with the same Key (id)
+     val joinDecadeSeries = pairSeries.join(maxDecade)
+     
     sc.stop()
   }
 }
