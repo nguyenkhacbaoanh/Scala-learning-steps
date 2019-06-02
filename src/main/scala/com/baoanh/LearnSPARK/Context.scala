@@ -13,6 +13,6 @@ trait Context {
           .builder()
           .config(conf)
           .getOrCreate()
-    lazy val sparkContext = new SparkContext(conf)
-    sparkContext.setLogLevel("WARN")
+    lazy val sc = new SparkContext(conf)
+    sc.setLogLevel("WARN")
 }

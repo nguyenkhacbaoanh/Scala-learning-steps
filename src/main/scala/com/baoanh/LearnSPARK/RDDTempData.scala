@@ -10,10 +10,12 @@ object RDDTempData extends App with Context {
   // import case class TempData
   import com.baoanh.BigDataAnalyst.ReadDatafromText.TempData
   
-  def main(args: Array[String]) = {
+  def main(args: Array[String]):Unit= {
     val pathFile:String = System.getProperty("user.dir") + "/data/tempdata.txt"
-    val data = sparkContext
+    val data = sparkSession
+                .read
                 .textFile(pathFile)
+                .rdd
                 .filter(!_.contains("Day ")) //drop the header
                 .filter(!_.contains(".")) // drop missing value with dot symbol
                 .map{ line =>
@@ -79,9 +81,10 @@ object RDDTempData extends App with Context {
     println(f"Stdev of Average Monthly Temperature: ${data.map(_.tave).stdev()}")
     println("--------------------------------------")
     // keyByYear
-//    val keyedByYear = data.map(td => td.year -> td)
-//    val averageTempsByYear = keyedByYear.aggregateByKey(0.0 -> 0)({ case ((sum, cnt), td) =>
-//      (sum+td.tmax, cnt+1)
-//    }, { case ((s1, c1), (s2, c2)) => (s1+s2, c1+c2) })
+    val keyedByYear = data.map(td => td.year -> td)
+    val averageTempsByYear = keyedByYear.aggregateByKey(0.0 -> 0)({ case ((sum, cnt), td) =>
+      (sum+td.tmax, cnt+1)
+    }, { case ((s1, c1), (s2, c2)) => (s1+s2, c1+c2) })
+    averageTempsByYear.take(10) foreach println
   } 
 }
