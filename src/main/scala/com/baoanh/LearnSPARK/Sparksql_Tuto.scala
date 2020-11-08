@@ -3,7 +3,7 @@ package com.baoanh.LearnSPARK
 object Sparksql_Tuto extends App with Context {
   import com.baoanh.LearnSPARK.Context
   def main(args: Array[String]) {
-    val path_dir:String = System.getProperty("user.dir")
+    val path_dir:String = "file://" + System.getProperty("user.dir")
     val tripsDF = sparkSession
                 .read
                 .option("header", true)

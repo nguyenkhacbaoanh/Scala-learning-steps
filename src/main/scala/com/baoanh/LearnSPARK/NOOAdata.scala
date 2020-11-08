@@ -14,7 +14,7 @@ object NOOAdata {
     val spark = SparkSession.builder().appName("Try SQL Spark").master("local[*]").getOrCreate()
     import spark.implicits._
     spark.sparkContext.setLogLevel("WARN")
-    val path: String = System.getProperty("user.dir")
+    val path: String = "file://" + System.getProperty("user.dir")
 //    declare schema for DataFrame
 //    tschema for data2019
     val tschema = StructType(Array(

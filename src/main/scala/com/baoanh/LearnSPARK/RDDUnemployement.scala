@@ -5,7 +5,7 @@ case class LaData(id: String, year: Int, period: Int, value: Double)
 object RDDUnemployement extends App with Context {
   def main(args: Array[String]):Unit = {
     import com.baoanh.LearnSPARK.Context
-    val path_dir: String = System.getProperty("user.dir")
+    val path_dir: String = "file://" + System.getProperty("user.dir")
       // Area data
     val area = sc.textFile(path_dir + "/data/la.area")
                 .filter(!_.contains("area_type_code")) // drop the header text

@@ -11,7 +11,7 @@ object RDDTempData extends App with Context {
   import com.baoanh.BigDataAnalyst.ReadDatafromText.TempData
   
   def main(args: Array[String]):Unit= {
-    val pathFile:String = System.getProperty("user.dir") + "/data/tempdata.txt"
+    val pathFile:String = "file://" + System.getProperty("user.dir") + "/data/tempdata.txt"
     val data = sparkSession
                 .read
                 .textFile(pathFile)
