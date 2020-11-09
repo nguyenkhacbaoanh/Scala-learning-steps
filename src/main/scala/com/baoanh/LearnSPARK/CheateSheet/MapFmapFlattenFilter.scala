@@ -1,7 +1,7 @@
 package com.baoanh.LearnSPARK.CheateSheet
 
 object MapFmapFlattenFilter {
-  def main(args: Array[String]) = {
+  def main(args: Array[String]): Unit = {
     // map method
     val myMap = Map(1-> "Anh", 2 -> "Ngoc", 3 -> "Jerome")
     println(myMap.mapValues(x => "Hello " + x)) //return map with Hello + original value
@@ -24,7 +24,7 @@ object MapFmapFlattenFilter {
     // -------------
     
     // filter method
-    print(f"My FlatMap ${myList.flatten} filtered is: \n${myList.flatten.filter(_ % 2 == 0)}")
+    // print(f"My FlatMap ${myList.flatten} filtered is: \n${myList.flatten.filter(_ % 2 == 0)}")
     // return result that satisfy a condition, ex: all of even number like above 
   }
 }
