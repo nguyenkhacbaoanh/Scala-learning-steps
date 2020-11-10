@@ -1,4 +1,4 @@
-package com.baoanh.JobSteaming
+package com.baoanh.JobStreaming
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SparkSession
 

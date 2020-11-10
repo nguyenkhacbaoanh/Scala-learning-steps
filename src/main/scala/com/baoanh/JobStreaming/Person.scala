@@ -1,4 +1,4 @@
-package com.baoanh.JobSteaming
+package com.baoanh.JobStreaming
 
 class Person(var firstName: String,
              var lastName: String,

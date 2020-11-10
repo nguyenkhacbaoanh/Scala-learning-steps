@@ -1,4 +1,4 @@
-package com.baoanh.JobSteaming
+package com.baoanh.JobStreaming
 import org.apache.spark.sql.streaming.StreamingQuery
 import org.apache.spark.sql.types.{StructField, StructType, StringType, LongType}
 
