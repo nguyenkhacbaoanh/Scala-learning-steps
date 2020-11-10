@@ -8,7 +8,7 @@
 	- [Spark DataFrame & Query function](./src/main/scala/com/baoanh/LearnSPARK/DataFrame_Tuto.scala)
 	- [Spark SQL & UFD](./src/main/scala/com/baoanh/LearnSPARK/Sparksql_Tuto.scala)
 	- [Spark RDD](./src/main/scala/com/baoanh/LearnSPARK/RDDTempData.scala)
-	- [Spark Streaming](./src/scala/com/baoanh/JobStreaming/)
+	- [Spark Streaming](./src/main/scala/com/baoanh/JobStreaming/)
 	
 3. Scala learning:
 	- [Abstract vs Trait](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/Abstract.scala)
