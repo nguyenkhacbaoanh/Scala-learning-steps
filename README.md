@@ -9,7 +9,7 @@
 	- [Spark SQL & UFD](./src/main/scala/com/baoanh/LearnSPARK/Sparksql_Tuto.scala)
 	- [Spark RDD](./src/main/scala/com/baoanh/LearnSPARK/RDDTempData.scala)
 	- [Spark Streaming](./src/main/scala/com/baoanh/JobStreaming/)
-    <a href="https://media.giphy.com/media/6JmyU148Rx4MkneJOC/giphy.gif"><img src="https://github.com/nguyenkhacbaoanh/Scala-learning-steps/raw/master/assets/job-streaming-spark-scala.gif"/></a>
+    <a href="https://youtu.be/MxTQp1FXXp0"><img src="https://github.com/nguyenkhacbaoanh/Scala-learning-steps/raw/master/assets/job-streaming-spark-scala.gif"/></a>
 3. Scala learning:
 	- [Abstract vs Trait](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/Abstract.scala)
 	- [Higher Order Function](./src/main/scala/com/baoanh/LearnSPARK/CheateSheet/HigherOrderFunction.scala)
